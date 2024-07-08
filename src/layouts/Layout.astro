@@ -1,4 +1,21 @@
 ---
+import { ModeToggle } from "@/components/ModeToggle";
+import { InputWithButton } from "@/components/InputWithButton";
+import { Button, buttonVariants } from "@/components/ui/button";
+import {
+	NavigationMenu,
+	NavigationMenuContent,
+	NavigationMenuIndicator,
+	NavigationMenuItem,
+	NavigationMenuLink,
+	NavigationMenuList,
+	NavigationMenuTrigger,
+	NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+import NavigationMenuDemo from "@/components/NavigationMenuDemo.jsx";
+import { Header } from "@/components/Header.jsx";
+import { H1 } from "@/components/Typography.jsx";
+
 interface Props {
 	title: string;
 }
@@ -6,7 +23,34 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<!doctype html>
+<script is:inline>
+	const getThemePreference = () => {
+		if (
+			typeof localStorage !== "undefined" &&
+			localStorage.getItem("theme")
+		) {
+			return localStorage.getItem("theme");
+		}
+		return window.matchMedia("(prefers-color-scheme: dark)").matches
+			? "dark"
+			: "light";
+	};
+
+	const isDark = getThemePreference() === "dark";
+	document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+	if (typeof localStorage !== "undefined") {
+		const observer = new MutationObserver(() => {
+			const isDark = document.documentElement.classList.contains("dark");
+			localStorage.setItem("theme", isDark ? "dark" : "light");
+		});
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ["class"],
+		});
+	}
+</script>
+
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -17,10 +61,12 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<H1 client:load className="text-8xl">PACS&times;IST</H1>
+		<Header client:load />
 		<slot />
 	</body>
 </html>
-<style is:global>
+<!-- <style is:global>
 	:root {
 		--accent: 136, 58, 234;
 		--accent-light: 224, 204, 250;
@@ -48,4 +94,4 @@ const { title } = Astro.props;
 			Courier New,
 			monospace;
 	}
-</style>
+</style> -->

@@ -1,0 +1,43 @@
+---
+import '@/styles/globals.css'
+
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import { H2, Li, P, Ul } from '@/components/Typography';
+---
+
+<Layout title="Welcome to Astro.">
+
+	<article class="prose">
+		<H2>Selecting the Best Pigging System for Your Needs</H2>
+
+        <P>Pigging Solutions systems are ideal for a wide range of product transfer applications. Our standard pigging systems, outlined under our Typical Applications page, often address the needs and budget considerations for many applications. When selecting the most appropriate pigging system, the decision is ultimately dependent on a cost/benefit analysis that considers application needs, system component costs and anticipated return on investment. Any of our pigging solutions can be modified to meet your specific application requirements.</P>
+
+        <H2>Questions to ask when selecting a pigging system:</H2>
+        <Ul>
+            <Li>Will the system be automated or manually operated?</Li>
+            <Li>
+                What is the ideal pigging process?
+                <Ul>
+                    <Li>In a 1-Way pigging process the pig is launched at the source and removed at the receiving destination</Li>
+                    <Li>In a 2-Way process the pig is returned to a home base pig launcher after being detected at the receiving destination</Li>
+                </Ul>
+            </Li>
+            <Li>Does the application require pigging from a single source to a single destination or should it accommodate multiple sources and/or multiple destinations?</Li>
+            <Li>
+                What type of piping should be used?
+                <Ul>
+                    <Li>Typical piping choices are Schedule 40, Schedule 10, or sanitary tube and stainless or carbon steel materials of construction.</Li>
+                </Ul>
+            </Li>
+            <Li>What are the chemical and physical characteristics of the products to be transferred using the common pigged transfer line?</Li>
+            <Li>What is the transfer product temperature(s)?</Li>
+            <Li>Is line flushing or CIP (clean-in-place) needed after pigging? If so, will the pig be included in the CIP process?</Li>
+        </Ul>
+
+        <P>The above questions help establish the type of pigging system that will best suit your needs. Pigging Solutions works with you directly to ensure these questions and more are answered during a joint application review so the final pigging system is the ideal solution for your application.</P>
+
+        <P>For more information about our Pigging Systems, Contact Us or Request a Quote.</P>
+	</article>
+
+</Layout>
